@@ -14,11 +14,8 @@ software.
 Required are
 ============
 * Webserver like 
-* lighttpd
+* lighttpd or apache(2)
 * php5
-* entry in /etc/sudoers: 
-  www-data ALL=(ALL) NOPASSWD: ALL
-
 
 Installation
 ============
