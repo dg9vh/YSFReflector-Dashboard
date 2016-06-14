@@ -15,7 +15,7 @@ Required are
 ============
 * Webserver like 
 * lighttpd or apache(2)
-* php5
+* PHP 5 >= 5.5.0
 
 Installation
 ============
