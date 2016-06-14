@@ -19,7 +19,6 @@ for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
 		echo"<td>$listElem[1]</td>";
 		echo"<td>$listElem[2]</td>";
 		echo"<td>$listElem[3]</td>";
-		echo"<td>$listElem[4]</td>";
 		echo"</tr>\n";
 	}
 
