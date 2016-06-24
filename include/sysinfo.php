@@ -94,7 +94,7 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">System Info</div>
   <!-- Tabelle -->
-		<table class="table">
+		<table id="sysinfo" class="table table-condensed">
 			<tbody>
 				<tr>
 					<th>CPU-Temperature</th>

@@ -4,11 +4,15 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Connected YSFGateways</div>
   <!-- Tabelle -->
-  <table class="table">
+  <div class="table-responsive"> 
+  <table id="gateways" class="table table-condensed">
+  	<thead>
     <tr>
       <th>Time (UTC)</th>
       <th>Callsign</th>
     </tr>
+    </thead>
+    <tbody>
 <?php
 	$gateways = getConnectedGateways($logLines);
 	foreach ($gateways as $gateway) {
@@ -18,5 +22,14 @@
 		echo "</tr>";
 	}
 ?>
+  </tbody>
   </table>
+  </div>
+  <script>
+    $(document).ready(function(){
+      $('#gateways').dataTable( {
+        "aaSorting": [[0,'desc']]
+      } );
+    });
+   </script>
 </div>

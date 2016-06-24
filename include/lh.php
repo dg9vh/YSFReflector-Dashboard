@@ -4,15 +4,19 @@
   <!-- Standard-Panel-Inhalt -->
   <div class="panel-heading">Last Heard List of today's <?php echo LHLINES; ?> callsigns.</div>
   <!-- Tabelle -->
-  <table class="table">
+  <div class="table-responsive">  
+  <table id="lh" class="table table-condensed">
+  <thead>
     <tr>
       <th>Time (UTC)</th>
       <th>Callsign</th>
       <th>Target</th>
       <th>Gateway</th>
     </tr>
+  </thead>
+  <tbody>
 <?php
-for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
+for ($i = 0; $i < count($lastHeard); $i++) {
 		$listElem = $lastHeard[$i];
 		echo"<tr>";
 		echo"<td>$listElem[0]</td>";
@@ -23,5 +27,14 @@ for ($i = 0; ($i < LHLINES) AND ($i < count($lastHeard)); $i++) {
 	}
 
 ?>
+  </tbody>
   </table>
+  </div>
+  <script>
+    $(document).ready(function(){
+      $('#lh').dataTable( {
+        "aaSorting": [[0,'desc']]
+      } );
+    });
+   </script>
 </div>

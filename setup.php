@@ -92,10 +92,6 @@ include "include/tools.php";
         <input type="text" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
-        <span class="input-group-addon" id="LHLINES" style="width: 300px">Last heard list lines:</span>
-        <input type="text" name="LHLINES" class="form-control" placeholder="20" aria-describedby="LHLINES" required data-fv-notempty-message="Value is required">
-      </div>
-      <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" form="config">Save configuration</button>
       </span>
