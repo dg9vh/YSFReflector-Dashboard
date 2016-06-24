@@ -2,7 +2,7 @@
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Last Heard List of today's <?php echo LHLINES; ?> callsigns.</div>
+  <div class="panel-heading">Last Heard List</div>
   <!-- Tabelle -->
   <div class="table-responsive">  
   <table id="lh" class="table table-condensed">
