@@ -15,7 +15,7 @@ include "include/functions.php";
     <meta charset="utf-8">
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">
     -->
-    <meta name="viewport" content="width=600px,initial-scale=0.4,maximum-scale=0.4, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=0.6,maximum-scale=1, user-scalable=yes">
     <meta http-equiv="refresh" content="<?php echo REFRESHAFTER?>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <!-- Das neueste kompilierte und minimierte CSS -->
