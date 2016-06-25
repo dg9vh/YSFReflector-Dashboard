@@ -8,13 +8,14 @@
   <table id="gateways" class="table table-condensed">
   	<thead>
     <tr>
-      <th>Time (UTC)</th>
+      <th>Reporting Time (UTC)</th>
       <th>Callsign</th>
     </tr>
     </thead>
     <tbody>
 <?php
-	$gateways = getConnectedGateways($logLines);
+	//$gateways = getConnectedGateways($logLines);
+	$gateways = getLinkedGateways($logLines);
 	foreach ($gateways as $gateway) {
 		
 		echo "<tr>";

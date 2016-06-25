@@ -78,6 +78,32 @@ function getConnectedGateways($logLines) {
 	return $gateways;
 }
 
+function getLinkedGateways($logLines) {
+//0000000000111111111122222222223333333333444444444455555555556666666666	
+//0123456789012345678901234567890123456789012345678901234567890123456789
+//M: 2016-06-24 11:11:41.787 Currently linked repeaters/gateways:
+//M: 2016-06-24 11:11:41.787     GATEWAY   : 217.82.212.214:42000 2/60
+//M: 2016-06-24 11:11:41.787     DM0GER    : 217.251.59.165:42000 5/60
+
+	$gateways = Array();
+	for ($i = count($logLines); $i>0; $i--) {
+		$logLine = $logLines[$i];
+		if (strpos($logLine, "Currently linked repeaters/gateways")) {
+			for ($j = $i+1; $j <= count($logLines); $j++) {
+				$logLine = $logLines[$j];
+				if (!startsWith(substr($logLine,27), "   ")) {
+					return $gateways;
+				} else {
+					$timestamp = substr($logLine, 3, 19);
+					$callsign = substr($logLine, 31, 10);
+					array_push($gateways, Array('callsign'=>$callsign,'timestamp'=>$timestamp));
+				}	
+			}
+		}
+	}
+	return $gateways;
+}
+
 function getHeardList($logLines) {
 	$heardList = array();
 	foreach ($logLines as $logLine) {
