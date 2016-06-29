@@ -88,6 +88,13 @@ function getLinkedGateways($logLines) {
 	$gateways = Array();
 	for ($i = count($logLines); $i>0; $i--) {
 		$logLine = $logLines[$i];
+		
+		if (strpos($logLine, "Starting YSFReflector")) {
+			return $gateways;
+		}
+		if (strpos($logLine, "No repeaters/gateways linked")) {
+			return $gateways;
+		}
 		if (strpos($logLine, "Currently linked repeaters/gateways")) {
 			for ($j = $i+1; $j <= count($logLines); $j++) {
 				$logLine = $logLines[$j];
