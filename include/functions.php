@@ -139,9 +139,6 @@ function getLastHeard($logLines) {
 			array_push($lastHeard, $listElem);
 			$counter++;
 		}
-		if ($counter == LHLINES) {
-			return $lastHeard;
-		}
 	}
 	return $lastHeard;
 }
