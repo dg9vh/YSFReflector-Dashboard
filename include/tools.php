@@ -29,6 +29,15 @@ function startsWith($haystack, $needle) {
     return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
 }
 
+function searchForKey($field, $needle, $array) {
+	foreach ($array as $key => $val) {
+		if ($val[$field] === $needle) {
+			return $key;
+		}
+	}
+	return null;
+}
+
 function getMHZ($freq) {
 	return substr($freq,0,3) . "." . substr($freq,3,3) . "." . substr($freq,6) . " Mhz";
 }

@@ -103,7 +103,11 @@ function getLinkedGateways($logLines) {
 				} else {
 					$timestamp = substr($logLine, 3, 19);
 					$callsign = substr($logLine, 31, 10);
-					array_push($gateways, Array('callsign'=>$callsign,'timestamp'=>$timestamp));
+					$ipport = substr($logLine,43);
+					$key = searchForKey("ipport",$ipport, $gateways);
+					if ($key === NULL) {
+						array_push($gateways, Array('callsign'=>$callsign,'timestamp'=>$timestamp,'ipport'=>$ipport));
+					}
 				}	
 			}
 		}
