@@ -48,6 +48,7 @@ include "include/sysinfo.php";
 include "include/disk.php";
 include "include/gateways.php";
 include "include/lh.php";
+include "include/allheard.php";
 ?>
 	<div class="panel panel-info">
 <?php
