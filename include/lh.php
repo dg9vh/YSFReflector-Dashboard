@@ -12,6 +12,7 @@
       <th>Callsign</th>
       <th>Target</th>
       <th>Gateway</th>
+      <th>Dur (s)</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,7 @@ for ($i = 0; $i < count($lastHeard); $i++) {
 		echo"<td>$listElem[1]</td>";
 		echo"<td>$listElem[2]</td>";
 		echo"<td>$listElem[3]</td>";
+		echo"<td>$listElem[4]</td>";
 		echo"</tr>\n";
 	}
 
