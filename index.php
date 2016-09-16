@@ -38,7 +38,7 @@ include "version.php";
   <body>
   <div class="page-header">
   <h1><small>YSFReflector-Dashboard by DG9VH for Reflector:</small>  <?php echo getConfigItem("Info", "Name", $configs); ?> / <?php echo getConfigItem("Info", "Description", $configs); ?></h1>
-  <h4>XSFReflector by G4KLX Version: 
+  <h4>YSFReflector by G4KLX Version: 
   <?php  echo getYSFReflectorVersion(); ?></h4>
 </div>
 <?php
