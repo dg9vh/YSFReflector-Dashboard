@@ -57,6 +57,14 @@ function getYSFReflectorLog() {
 	return $logLines;
 }
 
+function getShortYSFReflectorLog() {
+	// Open Logfile and copy loglines into LogLines-Array()
+	$logPath = YSFREFLECTORLOGPATH."/".YSFREFLECTORLOGPREFIX."-".date("Y-m-d").".log";
+	//$logLines = explode("\n", `tail -n100 $logPath`);
+	$logLines = explode("\n", `egrep -h "Received" $logPath | tail -1`);
+	return $logLines;
+}
+
 function getConnectedGateways($logLines) {
 	$gateways = Array();
 	foreach ($logLines as $logLine) {
@@ -168,13 +176,4 @@ function getSize($filesize, $precision = 2) {
 	}
 	return round($filesize, $precision).' '.$units[$idUnit].'B';
 }
-
-//Some basic inits
-$configs = getYSFReflectorConfig();
-$logLines = getYSFReflectorLog();
-
-$reverseLogLines = $logLines;
-array_multisort($reverseLogLines,SORT_DESC);
-$lastHeard = getLastHeard($reverseLogLines);
-$allHeard = getHeardList($reverseLogLines);
 ?>
