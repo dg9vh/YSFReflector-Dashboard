@@ -61,7 +61,7 @@ function getShortYSFReflectorLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = YSFREFLECTORLOGPATH."/".YSFREFLECTORLOGPREFIX."-".date("Y-m-d").".log";
 	//$logLines = explode("\n", `tail -n100 $logPath`);
-	$logLines = explode("\n", `egrep -h "Received" $logPath | tail -1`);
+	$logLines = explode("\n", `egrep -h "Received|watchdog" $logPath | tail -1`);
 	return $logLines;
 }
 
