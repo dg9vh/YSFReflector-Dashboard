@@ -15,7 +15,7 @@ function getYSFReflectorFileVersion() {
 	// returns creation-time of YSFReflector as version-number
 	$filename = YSFREFLECTORPATH."/YSFReflector";
 	if (file_exists($filename)) {
-		return date("d M y", filectime($filename));
+		return date("d M Y", filectime($filename));
 	}
 }
 
