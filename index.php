@@ -37,10 +37,17 @@ include "version.php";
     <title><?php echo getConfigItem("Info", "Name", $configs); ?> - YSFReflector-Dashboard by DG9VH</title>
   </head>
   <body>
-  <div class="page-header">
+  <div class="page-header" style="position:relative;">
   <h1><small>YSFReflector-Dashboard by DG9VH for Reflector:</small>  <?php echo getConfigItem("Info", "Name", $configs); ?> / <?php echo getConfigItem("Info", "Description", $configs); ?></h1>
   <h4>YSFReflector by G4KLX Version: 
   <?php  echo getYSFReflectorVersion(); ?></h4>
+  <?php
+  if (defined("LOGO")) {
+?>
+<div id="Logo" style="position:absolute;top:-43px;right:10px;"><img src="<?php echo LOGO ?>" width="250px" style="width:250px; border-radius:10px;box-shadow:2px 2px 2px #808080; padding:1px;background:#FFFFFF;border:1px solid #808080;" border="0" hspace="10" vspace="10" align="absmiddle"></div>
+<?php  	
+  }
+?>
 </div>
 <?php
 checkSetup();

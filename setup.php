@@ -1,5 +1,5 @@
 <?php
-
+include "config/config.php";
 include "include/tools.php";
 ?>
 <!doctype html>
@@ -54,42 +54,46 @@ include "include/tools.php";
       <h2>YSFReflector-Configuration</h2>
       <div class="input-group">
         <span class="input-group-addon" id="YSFREFLECTORLOGPATH" style="width: 300px">Path to YSFReflector-logfile</span>
-        <input type="text" name="YSFREFLECTORLOGPATH" class="form-control" placeholder="/var/log/YSFReflector/" aria-describedby="YSFREFLECTORLOGPATH" required data-fv-notempty-message="Value is required">
+        <input type="text" value="<?php echo constant("YSFREFLECTORLOGPATH") ?>" name="YSFREFLECTORLOGPATH" class="form-control" placeholder="/var/log/YSFReflector/" aria-describedby="YSFREFLECTORLOGPATH" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="YSFREFLECTORLOGPREFIX" style="width: 300px">Logfile-prefix</span>
-        <input type="text" name="YSFREFLECTORLOGPREFIX" class="form-control" placeholder="YSFReflector" aria-describedby="YSFREFLECTORLOGPREFIX" required data-fv-notempty-message="Value is required">
+        <input type="text" value="<?php echo constant("YSFREFLECTORLOGPREFIX") ?>" name="YSFREFLECTORLOGPREFIX" class="form-control" placeholder="YSFReflector" aria-describedby="YSFREFLECTORLOGPREFIX" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="YSFREFLECTORINIPATH" style="width: 300px">Path to YSFReflector.ini</span>
-        <input type="text" name="YSFREFLECTORINIPATH" class="form-control" placeholder="/etc/" aria-describedby="YSFREFLECTORINIPATH" required data-fv-notempty-message="Value is required">
+        <input type="text" value="<?php echo constant("YSFREFLECTORINIPATH") ?>" name="YSFREFLECTORINIPATH" class="form-control" placeholder="/etc/" aria-describedby="YSFREFLECTORINIPATH" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="YSFREFLECTORINIFILENAME" style="width: 300px">YSFReflector.ini-filename</span>
-        <input type="text" name="YSFREFLECTORINIFILENAME" class="form-control" placeholder="YSFReflector.ini" aria-describedby="YSFREFLECTORINIFILENAME" required data-fv-notempty-message="Value is required">
+        <input type="text" value="<?php echo constant("YSFREFLECTORINIFILENAME") ?>" name="YSFREFLECTORINIFILENAME" class="form-control" placeholder="YSFReflector.ini" aria-describedby="YSFREFLECTORINIFILENAME" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="YSFREFLECTORPATH" style="width: 300px">Path to YSFReflector-executable</span>
-        <input type="text" name="YSFREFLECTORPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="YSFREFLECTORPATH" required data-fv-notempty-message="Value is required">
+        <input type="text" value="<?php echo constant("YSFREFLECTORPATH") ?>" name="YSFREFLECTORPATH" class="form-control" placeholder="/usr/local/bin/" aria-describedby="YSFREFLECTORPATH" required data-fv-notempty-message="Value is required">
       </div>
     </div>
     <div class="container">
       <h2>Global Configuration</h2>
       <div class="input-group">
+        <span class="input-group-addon" id="LOGO" style="width: 300px">URL to Logo</span>
+        <input type="text" value="<?php echo constant("LOGO") ?>" name="LOGO" class="form-control" placeholder="http://your-logo" aria-describedby="LOGO">
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="REFRESHAFTER" style="width: 300px">Refresh page after in seconds</span>
-        <input type="text" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER" required data-fv-notempty-message="Value is required">
+        <input type="text" value="<?php echo constant("REFRESHAFTER") ?>" name="REFRESHAFTER" class="form-control" placeholder="60" aria-describedby="REFRESHAFTER" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="SHOWPROGRESSBARS" style="width: 300px">Show progressbars</span>
-        <div class="panel-body"><input type="checkbox" name="SHOWPROGRESSBARS"></div>
+        <div class="panel-body"><input type="checkbox" <?php if (defined("SHOWPROGRESSBARS")) echo "checked" ?> name="SHOWPROGRESSBARS"></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="TEMPERATUREALERT" style="width: 300px">Enable CPU-temperature-warning</span>
-        <div class="panel-body"><input type="checkbox" name="TEMPERATUREALERT"></div>
+        <div class="panel-body"><input type="checkbox" <?php if (defined("TEMPERATUREALERT")) echo "checked" ?> name="TEMPERATUREALERT"></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon" id="TEMPERATUREHIGHLEVEL" style="width: 300px">Warning temperature</span>
-        <input type="text" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL" required data-fv-notempty-message="Value is required">
+        <input type="text" value="<?php echo constant("TEMPERATUREHIGHLEVEL") ?>" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
       <span class="input-group-btn">
