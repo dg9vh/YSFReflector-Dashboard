@@ -98,6 +98,10 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
         <input type="text" value="<?php echo constant("TEMPERATUREHIGHLEVEL") ?>" name="TEMPERATUREHIGHLEVEL" class="form-control" placeholder="60" aria-describedby="TEMPERATUREHIGHLEVEL" required data-fv-notempty-message="Value is required">
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="SHOWQRZ" style="width: 300px">Show link to QRZ.com on Callsigns</span>
+        <div class="panel-body"><input type="checkbox" name="SHOWQRZ" <?php if (defined("SHOWQRZ")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" form="config">Save configuration</button>
       </span>

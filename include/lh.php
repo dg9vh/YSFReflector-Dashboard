@@ -21,7 +21,11 @@ for ($i = 0; $i < count($lastHeard); $i++) {
 		$listElem = $lastHeard[$i];
 		echo"<tr>";
 		echo"<td>$listElem[0]</td>";
-		echo"<td>$listElem[1]</td>";
+		if (constant("SHOWQRZ") && $listElem[1] !== "??????????" && !is_numeric($listElem[1])) {
+			echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[1]\">".str_replace("0","&Oslash;",$listElem[1])."</a></td>";
+		} else {
+			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[1])."</td>";
+		}
 		echo"<td>$listElem[2]</td>";
 		echo"<td>$listElem[3]</td>";
 		echo"<td>$listElem[4]</td>";
