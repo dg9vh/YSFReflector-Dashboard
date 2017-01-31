@@ -62,9 +62,9 @@ include "include/allheard.php";
 ?>
 	<div class="panel panel-info">
 <?php
-$datum = date("Y-m-d");
-$uhrzeit = date("H:i:s");
-echo "YSFReflector-Dashboard V ".VERSION." | Last Reload $datum, $uhrzeit";
+$lastReload = new DateTime();
+$lastReload->setTimezone(new DateTimeZone(TIMEZONE));
+echo "YSFReflector-Dashboard V ".VERSION." | Last Reload ".$lastReload->format('Y-m-d, H:i:s')." (".TIMEZONE.")";
 $time = microtime();
 $time = explode(' ', $time);
 $time = $time[1] + $time[0];
