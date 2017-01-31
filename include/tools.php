@@ -80,4 +80,10 @@ function checkSetup() {
 	}
 	error_reporting($el);
 }
+
+function convertTimezone($timestamp) {
+   $date = new DateTime($timestamp);
+   $date->setTimezone(new DateTimeZone(TIMEZONE));   
+   return $date->format('Y-m-d H:i:s');
+}
 ?>

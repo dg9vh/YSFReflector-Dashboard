@@ -8,7 +8,7 @@
   <table id="gateways" class="table table-condensed">
   	<thead>
     <tr>
-      <th>Reporting Time (UTC)</th>
+      <th>Reporting Time (<?php echo TIMEZONE;?>)</th>
       <th>Callsign</th>
     </tr>
     </thead>
@@ -19,7 +19,7 @@
 	foreach ($gateways as $gateway) {
 		
 		echo "<tr>";
-		echo "<td>$gateway[timestamp]</td><td>$gateway[callsign]</td>";
+		echo "<td>".convertTimezone($gateway[timestamp])."</td><td>$gateway[callsign]</td>";
 		echo "</tr>";
 	}
 ?>

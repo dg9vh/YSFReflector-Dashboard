@@ -140,7 +140,7 @@ function getHeardList($logLines) {
 		$gateway = substr($logLine, strrpos($logLine,"at") + 3);
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
-			array_push($heardList, array($timestamp, $callsign, $target, $gateway, $duration));
+			array_push($heardList, array(convertTimezone($timestamp), $callsign, $target, $gateway, $duration));
 		}
 		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
 			$txend = substr($logLine, 3, 19);

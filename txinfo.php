@@ -10,7 +10,7 @@ $reverseLogLines = $logLines;
 array_multisort($reverseLogLines,SORT_DESC);
 $lastHeard = getLastHeard($reverseLogLines, True);
 $listElem = $lastHeard[0];
-if (strlen($listElem[0]) !== 0) {
+if (strlen($listElem[1]) !== 0) {
 	echo "<tr>";
 	echo"<td nowrap>$listElem[0]</td>";
 	if (constant("SHOWQRZ") && $listElem[1] !== "??????????" && !is_numeric($listElem[1])) {
@@ -21,8 +21,8 @@ if (strlen($listElem[0]) !== 0) {
 	echo"<td nowrap>$listElem[2]</td>";
 	echo"<td nowrap>$listElem[3]</td>";
 	$UTC = new DateTimeZone("UTC");
-	$d1 = new DateTime($listElem[0], $UTC);
-	$d2 = new DateTime('now', $UTC);
+	$d1 = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
+	$d2 = new DateTime('now', new DateTimeZone(TIMEZONE));
 	$diff = $d2->getTimestamp() - $d1->getTimestamp();
 	echo"<td nowrap>$diff s</td>";
 	echo "</tr>";

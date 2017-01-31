@@ -8,7 +8,7 @@
   <table id="lh" class="table table-condensed">
   <thead>
     <tr>
-      <th>Time (UTC)</th>
+      <th>Time (<?php echo TIMEZONE;?>)</th>
       <th>Callsign</th>
       <th>Target</th>
       <th>Gateway</th>
