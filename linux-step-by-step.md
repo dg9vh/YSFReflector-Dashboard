@@ -1,116 +1,66 @@
-#How to install a YSFReflector
+# Linux Step-By-Step
+This short howto describes step-by-step how to install the YSFReflector-Dashboard on a system using a Debian Linux distribution.
 
-The following howto quickly describes the installation and configuration of a YSFReflector-system
-First of all you'll need to get a copy of the sources. This is recommended to do with git as following:
+##Installation Steps
+1. Update your system:
 
-git clone https://github.com/g4klx/YSFClients.git
+	>sudo apt-get update && sudo apt-get upgrade
 
-This copies the actual sources of the whole YSFClients-Project into a folder "YSFClients". Within this directory you'll find a folder "YSFReflector". cd into it and simply do
+2. Install a webserver:
 
-make clean all
+	>sudo apt-get install apache2
 
-A minute later the compile-process is done and you got an executable file "YSFReflector".
+3. Create a group for the webserver and add yourself to it:
 
-Within the directory you also got a YSFReflector.ini that you have to customize to your own needs. Fill in there following:
+	>sudo groupadd www-data
 
-Name=Your Reflector's name
-Description=Your Reflector's description
-There is also a line
+	>sudo usermod -G www-data -a <username>
+	
+4. Set permissions so you and the webserver have full access to the files:
 
-Daemon=1
-that forces the reflector-executable to run as a deamon after startup. For this you'll need to setup a user "mmdvm" on your linux-system. This can be done with:
+	If you use a current Debian Jessie, use following commands:
 
-groupadd mmdvm
-useradd mmdvm -g mmdvm -s /sbin/nologin
-As a last instance of installation, you may want to have the services started automatically at bootup of your server. Therefore you'll need a startup-script. Mine is
+	>sudo chown -R www-data:www-data /var/www/html
 
-/etc/init.d/YSFReflector.sh
-and has following content:
+	>sudo chmod -R 775 /var/www/html
 
-\#!/bin/bash
-\### BEGIN INIT INFO
-\#
-\# Provides:             YSFReflector
-\# Required-Start:       $all
-\# Required-Stop:        
-\# Default-Start:        2 3 4 5
-\# Default-Stop:         0 1 6
-\# Short-Description:    Example startscript YSFReflector
+	If you use a Debian Wheezy use:
 
-\#
-\### END INIT INFO
-\## Fill in name of program here.
-PROG="YSFReflector"
-PROG_PATH="/usr/local/bin/"
-PROG_ARGS="/etc/YSFReflector.ini"
-PIDFILE="/var/run/YSFReflector.pid"
-USER="root"
+	>sudo chown -R www-data:www-data /var/www
 
-start() {
-      if [ -e $PIDFILE ]; then
-          \## Program is running, exit with error.
-          echo "Error! $PROG is currently running!" 1>&2
-          exit 1
-      else
-          cd $PROG_PATH
-          ./$PROG $PROG_ARGS
-          echo "$PROG started"
-          touch $PIDFILE
-      fi
-}
+	>sudo chmod -R 775 /var/www
 
-stop() {
-      if [ -e $PIDFILE ]; then
-          \## Program is running, so stop it
-         echo "$PROG is running"
-         rm -f $PIDFILE
-         killall $PROG
-         echo "$PROG stopped"
-      else
-          \## Program is not running, exit with error.
-          echo "Error! $PROG not started!" 1>&2
-          exit 1
-      fi
-}
+5. Install PHP5 and enable the required modules:
 
-\## Check to see if we are running as root first.
-\## Found at
-\## http://www.cyberciti.biz/tips/shell-root-user-check-script.html
-if [ "$(id -u)" != "0" ]; then
-      echo "This script must be run as root" 1>&2
-      exit 1
-fi
+	>sudo apt-get install php5-common php5-cgi php5
 
-case "$1" in
-      start)
-          start
-          exit 0
-      ;;
-      stop)
-          stop
-          exit 0
-      ;;
-      reload|restart|force-reload)
-          stop
-          sleep 5
-          start
-          exit 0
-      ;;
-      **)
-          echo "Usage: $0 {start|stop|reload}" 1>&2
-          exit 1
-      ;;
-esac
-exit 0
-\### END
-		
-As you can see on top of the script, my binary is located in /usr/local/bin (where I copied it after compile) and my YSFReflector.ini is in /etc
+6. To install the dashboard you should use git for easy updates:
 
-Do it similar to be in standard.
+	>sudo apt-get install git
 
-To enable the service simply call
+7. Now you can clone the dashboard into your home directory:
 
-chkconfig YSFReflector.sh on
-Then all would be starting on boot-time.
+	>cd ~
+	
+	>git clone https://github.com/dg9vh/YSFReflector-Dashboard.git
 
-Hope you could follow all steps. It is recommended to do these as root :-)
+8. Next, you need to copy the files into the webroot so they can be served by apache2:
+
+	If you are using Debian Jessie, run:
+
+	>sudo cp -R /home/<username>/YSFReflector-Dashboard/* /var/www/html/	
+
+	If you are using Debian Wheezy, run:
+
+	>sudo cp -R /home/<username>/YSFReflector-Dashboard/* /var/www/
+
+9. To make sure the dashboard is served instead of the default "index.html", cd into the webroot /var/www/html respectively /var/www and remove that file:
+
+	>sudo rm index.html
+
+10. Finally, you need to configure the dashboard by pointing your browser to http://IP-OF-YOUR-YSFREFLECTOR/setup.php . This will create /var/www/html/config/config.php respectively /var/www/config/config.php which contains your custom settings. 
+
+Now the dashboard should be reachable via http://IP-OF-YOUR-YSFREFLECTOR/
+
+##Configuration Of Dashboard
+When configuring the dashboard, make sure to set the correct paths for logs etc. If they are wrong, no last-heard or similar information will be shown on the dashboard!
