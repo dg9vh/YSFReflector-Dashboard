@@ -26,5 +26,7 @@ if (strlen($listElem[1]) !== 0) {
 	$diff = $d2->getTimestamp() - $d1->getTimestamp();
 	echo"<td nowrap>$diff s</td>";
 	echo "</tr>";
+} else {
+	echo"<tr><td colspan=\"5\"></tr>";
 }
 ?>

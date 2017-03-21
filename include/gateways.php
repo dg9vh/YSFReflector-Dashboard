@@ -29,7 +29,7 @@
   <script>
     $(document).ready(function(){
       $('#gateways').dataTable( {
-        "aaSorting": [[0,'desc']]
+        "aaSorting": [[1,'desc']]
       } );
     });
    </script>
