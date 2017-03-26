@@ -19,7 +19,7 @@
 	foreach ($gateways as $gateway) {
 		
 		echo "<tr>";
-		echo "<td>".convertTimezone($gateway[timestamp])."</td><td>$gateway[callsign]</td>";
+		echo "<td>".convertTimezone($gateway['timestamp'])."</td><td>".$gateway['callsign']."</td>";
 		echo "</tr>";
 	}
 ?>
