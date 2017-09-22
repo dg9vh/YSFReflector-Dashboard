@@ -41,7 +41,7 @@ function getConfigItem($section, $key, $configs) {
 		}
 		$sectionpos++;
 	}
-	
+
 	return substr($configs[$sectionpos], strlen($key) + 1);
 }
 
@@ -87,16 +87,16 @@ function getConnectedGateways($logLines) {
 }
 
 function getLinkedGateways($logLines) {
-//0000000000111111111122222222223333333333444444444455555555556666666666	
+//0000000000111111111122222222223333333333444444444455555555556666666666
 //0123456789012345678901234567890123456789012345678901234567890123456789
 //M: 2016-06-24 11:11:41.787 Currently linked repeaters/gateways:
 //M: 2016-06-24 11:11:41.787     GATEWAY   : 217.82.212.214:42000 2/60
 //M: 2016-06-24 11:11:41.787     DM0GER    : 217.251.59.165:42000 5/60
 
 	$gateways = Array();
-	for ($i = count($logLines); $i>0; $i--) {
+	for ($i = count($logLines)-1; $i>0; $i--) {
 		$logLine = $logLines[$i];
-		
+
 		if (strpos($logLine, "Starting YSFReflector")) {
 			return $gateways;
 		}
@@ -104,7 +104,7 @@ function getLinkedGateways($logLines) {
 			return $gateways;
 		}
 		if (strpos($logLine, "Currently linked repeaters/gateways")) {
-			for ($j = $i+1; $j <= count($logLines); $j++) {
+			for ($j = $i+1; $j <= count($logLines)-1; $j++) {
 				$logLine = $logLines[$j];
 				if (!startsWith(substr($logLine,27), "   ")) {
 					return $gateways;
@@ -117,7 +117,7 @@ function getLinkedGateways($logLines) {
 					if ($key === NULL) {
 						array_push($gateways, Array('callsign'=>$callsign,'timestamp'=>$timestamp,'ipport'=>$ipport));
 					}
-				}	
+				}
 			}
 		}
 	}
@@ -136,7 +136,7 @@ function getHeardList($logLines) {
 		}
 		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
 		$callsign = trim($callsign2);
-		$target = substr($logLine, strpos($logLine, "to") + 3, strpos($logLine,"at") - strpos($logLine,"to") +6 ); 
+		$target = substr($logLine, strpos($logLine, "to") + 3, strpos($logLine,"at") - strpos($logLine,"to") +6 );
 		$gateway = substr($logLine, strrpos($logLine,"at") + 3);
 		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 		if ( strlen($callsign) < 11 ) {
