@@ -16,10 +16,16 @@ if (strlen($listElem[1]) !== 0) {
 	if (constant("SHOWQRZ") && $listElem[1] !== "??????????" && !is_numeric($listElem[1])) {
 		echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[1]\">".str_replace("0","&Oslash;",$listElem[1])."</a></td>";
 	} else {
-		echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[1])."</td>";
+		if (constant("GDPR"))
+			echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[1],0,3)."***")."</td>";
+		else
+			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[1])."</td>";
 	}
 	echo"<td nowrap>$listElem[2]</td>";
-	echo"<td nowrap>$listElem[3]</td>";
+	if (constant("GDPR"))
+		echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[3],0,3)."***")."</td>";
+	else
+		echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[3])."</td>";
 	$UTC = new DateTimeZone("UTC");
 	$d1 = new DateTime($listElem[0], new DateTimeZone(TIMEZONE));
 	$d2 = new DateTime('now', new DateTimeZone(TIMEZONE));

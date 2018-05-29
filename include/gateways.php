@@ -19,7 +19,12 @@
 	foreach ($gateways as $gateway) {
 		
 		echo "<tr>";
-		echo "<td>".convertTimezone($gateway['timestamp'])."</td><td>".$gateway['callsign']."</td>";
+		echo "<td>".convertTimezone($gateway['timestamp'])."</td>";
+		
+		if (constant("GDPR"))
+			echo"<td nowrap>".str_replace("0","&Oslash;",substr($gateway['callsign'],0,3)."***")."</td>";
+		else
+			echo"<td nowrap>".str_replace("0","&Oslash;",$gateway['callsign'])."</td>";
 		echo "</tr>";
 	}
 ?>

@@ -156,6 +156,10 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <div class="panel-body"><input type="checkbox" name="SHOWQRZ" <?php if (defined("SHOWQRZ")) echo "checked" ?>></div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="GDPR" style="width: 300px">Anonymize Callsigns (no function if QRZ.com enabled)</span>
+        <div class="panel-body"><input type="checkbox" name="GDPR" <?php if (defined("GDPR")) echo "checked" ?>></div>
+      </div>
+      <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="submit" form="config">Save configuration</button>
       </span>
