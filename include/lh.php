@@ -24,13 +24,13 @@ for ($i = 0; $i < count($lastHeard); $i++) {
 		if (constant("SHOWQRZ") && $listElem[1] !== "??????????" && !is_numeric($listElem[1])) {
 			echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[1]\">".str_replace("0","&Oslash;",$listElem[1])."</a></td>";
 		} else {
-			if (constant("GDPR"))
+			if (defined("GDPR"))
 				echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[1],0,3)."***")."</td>";
 			else
 				echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[1])."</td>";
 		}
 		echo"<td>$listElem[2]</td>";
-		if (constant("GDPR"))
+		if (defined("GDPR"))
 			echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[3],0,3)."***")."</td>";
 		else
 			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[3])."</td>";
