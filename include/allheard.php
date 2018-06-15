@@ -22,13 +22,13 @@ for ($i = 0; $i < count($allHeard); $i++) {
 		echo"<tr>";
 		echo"<td>$listElem[0]</td>";
 		
-		if (constant("GDPR"))
+		if (defined("GDPR"))
 			echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[1],0,3)."***")."</td>";
 		else
 			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[1])."</td>";
 		//echo"<td>$listElem[1]</td>";
 		echo"<td>$listElem[2]</td>";
-		if (constant("GDPR"))
+		if (defined("GDPR"))
 			echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[3],0,3)."***")."</td>";
 		else
 			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[3])."</td>";
