@@ -22,7 +22,7 @@ if (strlen($listElem[1]) !== 0) {
 			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[1])."</td>";
 	}
 	echo"<td nowrap>$listElem[2]</td>";
-	if (constant("GDPR"))
+	if (defined("GDPR"))
 		echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[3],0,3)."***")."</td>";
 	else
 		echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[3])."</td>";
