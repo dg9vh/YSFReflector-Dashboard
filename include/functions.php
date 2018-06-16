@@ -19,6 +19,15 @@ function getYSFReflectorFileVersion() {
 	}
 }
 
+function getGitVersion(){
+	if (file_exists(".git")) {
+		exec("git rev-parse --short HEAD", $output);
+		return 'GitID #<a href="https://github.com/dg9vh/YSFReflector-Dashboard/commit/'.$output[0].'" target="_blank">'.$output[0].'</a>';
+	} else {
+		return 'GitID unknown';
+	}
+}
+
 function getYSFReflectorConfig() {
 	// loads YSFReflector.ini into array for further use
 	$conf = array();

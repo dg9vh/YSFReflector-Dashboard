@@ -13,7 +13,7 @@ $listElem = $lastHeard[0];
 if (strlen($listElem[1]) !== 0) {
 	echo "<tr>";
 	echo"<td nowrap>$listElem[0]</td>";
-	if (constant("SHOWQRZ") && $listElem[1] !== "??????????" && !is_numeric($listElem[1])) {
+	if (defined("SHOWQRZ") && $listElem[1] !== "??????????" && !is_numeric($listElem[1])) {
 		echo"<td nowrap><a target=\"_new\" href=\"https://qrz.com/db/$listElem[1]\">".str_replace("0","&Oslash;",$listElem[1])."</a></td>";
 	} else {
 		if (defined("GDPR"))
