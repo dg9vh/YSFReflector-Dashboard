@@ -52,6 +52,13 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
   </div>
   <form id="config" action="setup.php" method="get">
     <input type="hidden" name="cmd" value="writeconfig">
+<?php
+    if (defined("DISABLESETUPWARNING")) {
+?>
+    <input type="hidden" name="DISABLESETUPWARNING" value="">
+<?php
+}
+?>
     <div class="container">
       <h2>YSFReflector-Configuration</h2>
       <div class="input-group">
