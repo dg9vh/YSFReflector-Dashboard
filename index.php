@@ -33,7 +33,10 @@ include "version.php";
   	<style>
  	    h4 {
  		display: inline
- 		}		
+ 		}	
+            body{
+                padding: 10px;
+                }
  	</style>
     <title><?php echo getConfigItem("Info", "Name", $configs); ?> - YSFReflector-Dashboard by DG9VH</title>
   </head>
