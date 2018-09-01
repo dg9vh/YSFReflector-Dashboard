@@ -76,21 +76,16 @@ function getOldYSFReflectorLog() {
         
         foreach ($files as $file) {
             if ( $file != "." && $file != ".." ) {
-                // print "$file<br>"; // TMP
     
             	// Open older Logfiles and copy loglines into oldLogLines-Array()
-                // print "opening file $file<br>"; // TMP
             	if ($log = fopen(YSFREFLECTORLOGPATH."/".$file, 'r')) {
             		while ($oldlogLine = fgets($log)) {
-                                // print "--log is $oldlogLine <br>"; // TMP
 
                                 if (strpos($oldlogLine, 'Received data from') !== false) {
-                                        // print "----log is $oldlogLine <br>"; // TMP
             			 	array_push($oldlogLines, $oldlogLine);
                                 }
 
             			// if (startsWith($oldlogLine, "M:"))
-                                //         // print "----log is $oldlogLine <br>"; // TMP
             			// 	array_push($oldlogLines, $oldlogLine);
             		}
             		fclose($log);

@@ -17,6 +17,5 @@ $allHeard = getHeardList($reverseLogLines);
 
 $reverseOldLogLines = $oldlogLines;
 array_multisort($reverseOldLogLines,SORT_DESC);
-// $oldlastHeard = getLastHeard($reverseOldLogLines); //TMP
 $oldallHeard = getHeardList($reverseOldLogLines);
 ?>
