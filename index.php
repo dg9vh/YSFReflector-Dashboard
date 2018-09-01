@@ -34,6 +34,9 @@ include "version.php";
  	    h4 {
  		display: inline
  		}		
+            body{
+              padding: 10px;
+            }
  	</style>
     <title><?php echo getConfigItem("Info", "Name", $configs); ?> - YSFReflector-Dashboard by DG9VH</title>
   </head>
@@ -55,10 +58,13 @@ checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/txinfo.php";
 include "include/sysinfo.php";
-include "include/disk.php";
+//include "include/disk.php";
 include "include/gateways.php";
 include "include/lh.php";
 include "include/allheard.php";
+if (defined("SHOWOLDMHEARD")) {
+  include "include/oldheard.php";
+}
 ?>
 	<div class="panel panel-info">
 <?php
