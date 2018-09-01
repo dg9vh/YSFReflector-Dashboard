@@ -151,6 +151,10 @@ get_tz_options(constant("TIMEZONE"), "Timezone", '');
         <div class="panel-body"><input type="checkbox" <?php if (defined("SHOWPROGRESSBARS")) echo "checked" ?> name="SHOWPROGRESSBARS"></div>
       </div>
       <div class="input-group">
+        <span class="input-group-addon" id="SHOWOLDMHEARD" style="width: 300px">Show historic heard logs</span>
+        <div class="panel-body"><input type="checkbox" <?php if (defined("SHOWOLDMHEARD")) echo "checked" ?> name="SHOWOLDMHEARD"></div>
+      </div>
+      <div class="input-group">
         <span class="input-group-addon" id="TEMPERATUREALERT" style="width: 300px">Enable CPU-temperature-warning</span>
         <div class="panel-body"><input type="checkbox" <?php if (defined("TEMPERATUREALERT")) echo "checked" ?> name="TEMPERATUREALERT"></div>
       </div>

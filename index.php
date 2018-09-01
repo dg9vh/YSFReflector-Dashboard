@@ -62,6 +62,9 @@ include "include/disk.php";
 include "include/gateways.php";
 include "include/lh.php";
 include "include/allheard.php";
+if (defined("SHOWOLDMHEARD")) {
+  include "include/oldheard.php";
+}
 ?>
 	<div class="panel panel-info">
 <?php

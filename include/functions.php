@@ -67,6 +67,35 @@ function getYSFReflectorLog() {
 	return $logLines;
 }
 
+
+function getOldYSFReflectorLog() {
+        // first loop through the directory to find all log files for this year
+        $dir    = YSFREFLECTORLOGPATH;
+        $files = scandir($dir, 1);
+        $oldlogLines = array();
+        
+        foreach ($files as $file) {
+            if ( $file != "." && $file != ".." ) {
+    
+            	// Open older Logfiles and copy loglines into oldLogLines-Array()
+            	if ($log = fopen(YSFREFLECTORLOGPATH."/".$file, 'r')) {
+            		while ($oldlogLine = fgets($log)) {
+
+                                if (strpos($oldlogLine, 'Received data from') !== false) {
+            			 	array_push($oldlogLines, $oldlogLine);
+                                }
+
+            			// if (startsWith($oldlogLine, "M:"))
+            			// 	array_push($oldlogLines, $oldlogLine);
+            		}
+            		fclose($log);
+            	}
+            }
+        }
+	return $oldlogLines;
+}
+
+
 function getShortYSFReflectorLog() {
 	// Open Logfile and copy loglines into LogLines-Array()
 	$logPath = YSFREFLECTORLOGPATH."/".YSFREFLECTORLOGPREFIX."-".date("Y-m-d").".log";

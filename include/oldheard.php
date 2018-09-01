@@ -2,10 +2,10 @@
 ?>
   <div class="panel panel-default">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Todays Heard List</div>
+  <div class="panel-heading">Alltime Heard List</div>
   <!-- Tabelle -->
   <div class="table-responsive">  
-  <table id="allHeard" class="table table-condensed">
+  <table id="oldallHeard" class="table table-condensed">
   <thead>
     <tr>
       <th>Time (<?php echo TIMEZONE;?>)</th>
@@ -17,8 +17,8 @@
   </thead>
   <tbody>
 <?php
-for ($i = 0; $i < count($allHeard); $i++) {
-		$listElem = $allHeard[$i];
+for ($i = 0; $i < count($oldallHeard); $i++) {
+		$listElem = $oldallHeard[$i];
 		echo"<tr>";
 		echo"<td>$listElem[0]</td>";
 		
@@ -42,7 +42,7 @@ for ($i = 0; $i < count($allHeard); $i++) {
   </div>
   <script>
     $(document).ready(function(){
-      $('#allHeard').dataTable( {
+      $('#oldallHeard').dataTable( {
         "aaSorting": [[0,'desc']]
       } );
     });
