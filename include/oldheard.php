@@ -31,7 +31,6 @@ for ($i = 0; $i < count($oldallHeard); $i++) {
 			echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[3],0,3)."***")."</td>";
 		else
 			echo"<td nowrap>".str_replace("0","&Oslash;",$listElem[3])."</td>";
-		// echo"<td>$listElem[4]</td>";
 		echo"</tr>\n";
 	}
 
