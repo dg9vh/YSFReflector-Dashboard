@@ -68,28 +68,44 @@ function getYSFReflectorLog() {
 }
 
 
+function listdir_by_date($path){
+        $dir = opendir($path);
+        $list = array();
+        while($file = readdir($dir)){
+            if ($file != '.' and $file != '..'){
+                $ctime = filectime($data_path . $file) . ',' . $file;
+                $list[$ctime] = $file;
+            }
+        }
+        closedir($dir);
+        krsort($list);
+        return $list;
+}
+
+
 function getOldYSFReflectorLog() {
-        // first loop through the directory to find all log files for this year
-        $dir    = YSFREFLECTORLOGPATH;
-        $files = scandir($dir, 1);
+        $dir = YSFREFLECTORLOGPATH;
+        $scanlogs = SHOWOLDMHEARD;
         $oldlogLines = array();
+
+        $dir_files = listdir_by_date($dir);
         
-        foreach ($files as $file) {
+        foreach ($dir_files as $file) {
             if ( $file != "." && $file != ".." ) {
+                if ( $scanlogs >= 0 ) {
+        
+                	if ($log = fopen(YSFREFLECTORLOGPATH."/".$file, 'r')) {
+                		while ($oldlogLine = fgets($log)) {
     
-            	// Open older Logfiles and copy loglines into oldLogLines-Array()
-            	if ($log = fopen(YSFREFLECTORLOGPATH."/".$file, 'r')) {
-            		while ($oldlogLine = fgets($log)) {
-
-                                if (strpos($oldlogLine, 'Received data from') !== false) {
-            			 	array_push($oldlogLines, $oldlogLine);
-                                }
-
-            			// if (startsWith($oldlogLine, "M:"))
-            			// 	array_push($oldlogLines, $oldlogLine);
-            		}
-            		fclose($log);
-            	}
+                                    if (strpos($oldlogLine, 'Received data from') !== false) {
+                			 	array_push($oldlogLines, $oldlogLine);
+                                    }
+    
+                		}
+                        fclose($log);
+                	}
+                $scanlogs = $scanlogs - 1;
+                }
             }
         }
 	return $oldlogLines;
