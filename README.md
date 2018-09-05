@@ -26,6 +26,11 @@ Installation
 
 For detailled installation see `linux-step-by-step.md` within this repository.
 
+Note
+============
+* You might need to implement a logrotate mechanism for the YSFReflector log files to prevent it to fill your filesystem. This directory is normally configured with 'FilePath=' in /etc/YSFReflector.ini
+
+
 Contact
 =======
 Feel free to contact the author via email: dg9vh@darc.de
