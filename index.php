@@ -33,15 +33,28 @@ include "version.php";
   	<style>
  	    h4 {
  		display: inline
- 		}		
+ 		}
+            body{
+                padding: 5px;
+                }
+           table, th, td {
+//                border-collapse: collapse;
+                border: 1px solid black;
+                padding: 0px;
+             }
+           th, td {
+//                height: auto;
+                padding: 0px;
+//                border: 1px solid black;
+              }
  	</style>
     <title><?php echo getConfigItem("Info", "Name", $configs); ?> - YSFReflector-Dashboard by DG9VH</title>
   </head>
   <body>
   <div class="page-header" style="position:relative;">
-  <h1><small>YSFReflector-Dashboard by DG9VH for Reflector:</small>  <?php echo getConfigItem("Info", "Name", $configs); ?> / <?php echo getConfigItem("Info", "Description", $configs); ?></h1>
-  <h4>YSFReflector by G4KLX Version: 
-  <?php  echo getYSFReflectorVersion(); ?></h4>
+  <h3><small>YSFReflector-Dashboard for Reflector:</small>  <?php echo getConfigItem("Info", "Name", $configs); ?> / <?php echo getConfigItem("Info", "Description", $configs); ?></h1>
+  <h4> 
+  <?php   ?></h4>
   <?php
   if (LOGO !== "") {
 ?>
@@ -54,11 +67,14 @@ include "version.php";
 checkSetup();
 // Here you can feel free to disable info-sections by commenting out with // before include
 include "include/txinfo.php";
-include "include/sysinfo.php";
-include "include/disk.php";
-include "include/gateways.php";
 include "include/lh.php";
+include "include/gateways.php";
+include "include/sysinfo.php";
 include "include/allheard.php";
+if (defined("SHOWOLDMHEARD")) {
+  include "include/oldheard.php";
+include "include/disk.php";
+}
 ?>
 	<div class="panel panel-info">
 <?php
@@ -71,7 +87,7 @@ $time = $time[1] + $time[0];
 $finish = $time;
 $total_time = round(($finish - $start), 4);
 echo '<!--Page generated in '.$total_time.' seconds.-->';	
-?> | get your own at: <a href="https://github.com/dg9vh/YSFReflector-Dashboard">https://github.com/dg9vh/YSFReflector-Dashboard</a>
+?>
 	</div>
   </body>
 </html>
