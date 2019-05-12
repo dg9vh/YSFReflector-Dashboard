@@ -73,7 +73,7 @@ function listdir_by_date($path){
         $list = array();
         while($file = readdir($dir)){
             if ($file != '.' and $file != '..'){
-                $ctime = filectime(YSFREFLECTORLOGPATH . "/" . $file) . ',' . $file;
+                $ctime = filectime($path . "/" . $file) . ',' . $file;
                 $list[$ctime] = $file;
             }
         }
