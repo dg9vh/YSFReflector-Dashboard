@@ -1,13 +1,11 @@
-  <div class="panel panel-default">
-  <!-- Standard-Panel-Inhalt -->
-	  <div class="panel-heading">Disk use</div>
-	  <!-- Tabelle -->
-	  <div class="table-responsive">  
+  <div class="card">
+	  <div class="card-header">Disk use</div>
+	  <div class="table-responsive">
 			<table id="diskuse" class="table table-condensed table-striped table-hover">
 
 					<thead>
 						<tr>
-						   
+
 							<th class="w10p filesystem">Filesystem</th>
 							<th class="w20p">Mount</th>
 							<th>Use</th>
@@ -17,7 +15,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						
+
 <?php
 
  error_reporting(E_ERROR | E_WARNING | E_PARSE);
@@ -51,7 +49,7 @@ else
             continue;
 
 
-?>		
+?>
 
 						<tr>
 							<td><?php echo $filesystem ?></td>
@@ -61,15 +59,12 @@ else
 							<td><?php echo getSize($used * 1024) ?></td>
 							<td><?php echo getSize($total * 1024) ?></td>
 						</tr>
-					
-<?php					
+
+<?php
         $key++;
     }
 
 }
-
- 
-
 
 } catch (Exception $e) {
     return false;
@@ -77,11 +72,7 @@ else
 
 ?>
 
-   
-	  
 					</tbody>
 			</table>
-	  </div>  
+	  </div>
   </div>
-
- 

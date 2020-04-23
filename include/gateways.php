@@ -1,10 +1,8 @@
 <?php
 ?>
-  <div class="panel panel-default">
-  <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Connected YSFGateways</div>
-  <!-- Tabelle -->
-  <div class="table-responsive"> 
+  <div class="card">
+  <div class="card-header">Connected YSFGateways</div>
+  <div class="table-responsive">
   <table id="gateways" class="table table-condensed">
   	<thead>
     <tr>
@@ -17,10 +15,10 @@
 	//$gateways = getConnectedGateways($logLines);
 	$gateways = getLinkedGateways($logLines);
 	foreach ($gateways as $gateway) {
-		
+
 		echo "<tr>";
 		echo "<td>".convertTimezone($gateway['timestamp'])."</td>";
-		
+
 		if (defined("GDPR"))
 			echo"<td nowrap>".str_replace("0","&Oslash;",substr($gateway['callsign'],0,3)."***")."</td>";
 		else

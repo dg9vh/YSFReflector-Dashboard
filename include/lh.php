@@ -1,10 +1,8 @@
 <?php
 ?>
-  <div class="panel panel-default">
-  <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Last Heard List</div>
-  <!-- Tabelle -->
-  <div class="table-responsive">  
+  <div class="card">
+  <div class="card-header">Last Heard List</div>
+  <div class="table-responsive">
   <table id="lh" class="table table-condensed">
   <thead>
     <tr>

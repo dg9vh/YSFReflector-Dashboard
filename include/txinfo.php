@@ -1,8 +1,8 @@
-  <div class="panel panel-default">
+  <div class="card">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Currently TXing</div>
+  <div class="card-header">Currently TXing</div>
   <!-- Tabelle -->
-  <div class="table-responsive">  
+  <div class="table-responsive">
   <table id="currtx" class="table table-condensed table-striped table-hover">
    <thead>
     <tr>
@@ -16,7 +16,7 @@
    <tbody id="txline">
    </tbody>
   </table>
-  </div>  
+  </div>
 </div>
 <script>
 function doXMLHTTPRequest(scriptname, elem) {

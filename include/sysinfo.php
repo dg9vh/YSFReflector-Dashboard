@@ -96,9 +96,9 @@
 	$idletime = format_time((substr($output,strpos($output," ")))/$cpucores);
 
 ?>
-<div class="panel panel-default">
+<div class="card">
   <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">System Info</div>
+  <div class="card-header">System Info</div>
   <!-- Tabelle -->
 	<div class="table-responsive">  
 		<table id="sysinfo" class="table table-condensed">
