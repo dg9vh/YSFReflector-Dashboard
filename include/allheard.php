@@ -1,10 +1,8 @@
 <?php
 ?>
-  <div class="panel panel-default">
-  <!-- Standard-Panel-Inhalt -->
-  <div class="panel-heading">Todays Heard List</div>
-  <!-- Tabelle -->
-  <div class="table-responsive">  
+  <div class="card">
+  <div class="card-header">Todays Heard List</div>
+  <div class="table-responsive">
   <table id="allHeard" class="table table-condensed">
   <thead>
     <tr>
@@ -21,7 +19,7 @@ for ($i = 0; $i < count($allHeard); $i++) {
 		$listElem = $allHeard[$i];
 		echo"<tr>";
 		echo"<td>$listElem[0]</td>";
-		
+
 		if (defined("GDPR"))
 			echo"<td nowrap>".str_replace("0","&Oslash;",substr($listElem[1],0,3)."***")."</td>";
 		else
