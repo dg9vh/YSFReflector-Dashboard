@@ -46,8 +46,25 @@ include "version.php";
   <div class="container-fluid">
     <?php
       checkSetup();
-      include "include/txinfo.php";
     ?>
+    <div class="row">
+      <div class="col-10">
+        <?php
+          include "include/txinfo.php";
+        ?>
+      </div>
+      <?php if (LOGO !== "") { ?>
+      <div id="Logo" class="col-2">
+        <img src="<?php echo LOGO ?>" width="250px" style="width:250px; border-radius:10px;box-shadow:2px 2px 2px #808080; padding:1px;background:#FFFFFF;border:1px solid #808080;" border="0" hspace="10" vspace="10" align="justify-content-center">
+      </div>
+      <?php } else { ?>
+      <div id="Logo" class="col-2">
+        <h3 class="text-center">YSF-Reflector<br />Dashboard</h3>
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+
     <div class="row">
       <div class="col">
         <?php
