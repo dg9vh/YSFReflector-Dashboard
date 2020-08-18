@@ -21,6 +21,8 @@ include "version.php";
   <meta name="description" content="YSF-Reflector Dashboard by DG9VH">
   <meta name="author" content="DG9VH, KC1AWV">
   <meta http-equiv="refresh" content="<?php echo REFRESHAFTER?>">
+  <!-- So refresh works every time -->
+  <meta http-equiv="expires" content="0">
 
   <title><?php echo getConfigItem("Info", "Name", $configs); ?> - YSFReflector-Dashboard by DG9VH</title>
 
