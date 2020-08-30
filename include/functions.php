@@ -85,26 +85,26 @@ function listdir_by_date($path){
 
 function getOldYSFReflectorLog() {
         $dir = YSFREFLECTORLOGPATH;
-        $scanlogs = SHOWOLDMHEARD;
+        $scannedLogs = 0;
         $oldlogLines = array();
 
         $dir_files = listdir_by_date($dir);
         
         foreach ($dir_files as $file) {
-            if ( $file != "." && $file != ".." ) {
-                if ( $scanlogs >= 0 ) {
-        
-                	if ($log = fopen(YSFREFLECTORLOGPATH."/".$file, 'r')) {
-                		while ($oldlogLine = fgets($log)) {
-    
-                                    if (strpos($oldlogLine, 'Received data from') !== false) {
-                			 	array_push($oldlogLines, $oldlogLine);
-                                    }
-    
-                		}
+            $filepath = $dir."/".$file;
+            if ( is_file( $filepath ) && substr( $filepath, -4 ) == '.log' ) {
+                if ($log = fopen($filepath, 'r')) {
+                        while ($oldlogLine = fgets($log)) {
+                                if (startsWith($oldlogLine, "M:")){
+                                        array_push($oldlogLines, $oldlogLine);
+                                }
+                        }
                         fclose($log);
-                	}
-                $scanlogs = $scanlogs - 1;
+
+                        $scannedLogs++;
+                        if ( $scannedLogs > SHOWOLDMHEARD ) {
+                                break;
+                        }
                 }
             }
         }
