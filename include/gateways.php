@@ -30,7 +30,7 @@
   </table>
   </div>
   <script>
-    $(document).ready(function(){
+    $(document).ready(function(){ 
       $('#gateways').dataTable( {
         "aaSorting": [[1,'asc']]
       } );
