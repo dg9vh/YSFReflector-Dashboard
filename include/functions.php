@@ -183,23 +183,25 @@ function getHeardList($logLines) {
 	$heardList = array();
 	$dttxend = "";
 	foreach ($logLines as $logLine) {
-		$duration = "transmitting";
-		$timestamp = substr($logLine, 3, 19);
-		$dttimestamp = new DateTime($timestamp);
-		if ($dttxend !== "") {
-			$duration = $dttimestamp->diff($dttxend)->format("%s");
-		}
-		$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
-		$callsign = trim($callsign2);
-		$target = substr($logLine, strpos($logLine, "to") + 3, strpos($logLine,"at") - strpos($logLine,"to") +6 ); 
-		$gateway = substr($logLine, strrpos($logLine,"at") + 3);
-		// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
-		if ( strlen($callsign) < 11 ) {
-			array_push($heardList, array(convertTimezone($timestamp), $callsign, $target, $gateway, $duration));
-		}
-		if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
-			$txend = substr($logLine, 3, 19);
-			$dttxend = new DateTime($txend);
+		if (strpos($logLine,"Data from") == false and strpos($logLine,"blocked") == false) {
+			$duration = "transmitting";
+			$timestamp = substr($logLine, 3, 19);
+			$dttimestamp = new DateTime($timestamp);
+			if ($dttxend !== "") {
+				$duration = $dttimestamp->diff($dttxend)->format("%s");
+			}
+			$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
+			$callsign = trim($callsign2);
+			$target = substr($logLine, strpos($logLine, "to") + 3, strpos($logLine,"at") - strpos($logLine,"to") +6 ); 
+			$gateway = substr($logLine, strrpos($logLine,"at") + 3);
+			// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
+			if ( strlen($callsign) < 11 ) {
+				array_push($heardList, array(convertTimezone($timestamp), $callsign, $target, $gateway, $duration));
+			}
+			if(strpos($logLine,"end of") || strpos($logLine,"watchdog has expired") || strpos($logLine,"ended RF data") || strpos($logLine,"ended network")) {
+				$txend = substr($logLine, 3, 19);
+				$dttxend = new DateTime($txend);
+			}
 		}
 	}
 	return $heardList;
