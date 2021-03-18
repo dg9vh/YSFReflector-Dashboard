@@ -45,7 +45,7 @@ include "version.php";
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container-fluid">
       <span class="float:left">
-        <a class="navbar-brand" href="#">YSFReflector-Dashboard by DG9VH for Reflector: <?php echo getConfigItem("Info", "Name", $configs); ?> / <?php echo getConfigItem("Info", "Description", $configs); ?></a>
+        <a class="navbar-brand" href="#">YSFReflector-Dashboard by DG9VH for Reflector: <?php echo getConfigItem("Info", "Name", $configs); ?> / <?php echo getConfigItem("Info", "Description", $configs); ?> (#<?php echo getConfigItem("Info", "Id", $configs); ?>)</a>
       </span>
       <span class="navbar-brand float:right">
         YSFReflector by G4KLX Version: <?php  echo getYSFReflectorVersion(); ?>
