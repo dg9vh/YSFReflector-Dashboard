@@ -183,7 +183,7 @@ function getHeardList($logLines) {
 	$heardList = array();
 	$dttxend = "";
 	foreach ($logLines as $logLine) {
-		if (strpos($logLine,"Data from") == false and strpos($logLine,"YSFV") == false and  strpos($logLine,"blocked") == false and strpos($logLine,"Reload the Blacklist from File") == false and strpos($logLine,"Reload the Blacklist from File") == false and strpos($logLine,"YSF server status enquiry from") == false) {
+		if (strpos($logLine,"Data from") == false and strpos($logLine,"Received command") == false and  strpos($logLine,"blocked") == false and strpos($logLine,"Reload the Blacklist from File") == false and strpos($logLine,"Reload the Blacklist from File") == false and strpos($logLine,"YSF server status enquiry from") == false) {
 			$duration = "transmitting";
 			$timestamp = substr($logLine, 3, 19);
 			$dttimestamp = new DateTime($timestamp);
