@@ -192,8 +192,11 @@ function getHeardList($logLines) {
 			}
 			$callsign2 = substr($logLine, strpos($logLine,"from") + 5, strpos($logLine,"to") - strpos($logLine,"from") - 6);
 			$callsign = trim($callsign2);
-			$target = substr($logLine, strpos($logLine, "to") + 3, strpos($logLine,"at") - strpos($logLine,"to") +6 ); 
-			$gateway = substr($logLine, strrpos($logLine,"at") + 3);
+			$target = substr($logLine, strpos($logLine, " to ") + 4, strpos($logLine," at ") - strpos($logLine, " to ") - 3);
+			$gateway = substr($logLine, strrpos($logLine," at ") + 4);
+			if (strpos($gateway, "FICH") == true) {
+				$gateway = substr($gateway, 0, strpos($gateway, "FICH"));
+			}
 			// Callsign or ID should be less than 11 chars long, otherwise it could be errorneous
 			if ( strlen($callsign) < 11 ) {
 				array_push($heardList, array(convertTimezone($timestamp), $callsign, $target, $gateway, $duration));
