@@ -2,6 +2,8 @@
 Dashboard for YSFReflector (by G4KLX)
 =====================================
 
+THIS CODE IS NO LONGER UNDER DEVELOPMENT!!!
+
 About
 =====
 YSFReflector-Dashboard is a web-dashboard for visualization of different data like
