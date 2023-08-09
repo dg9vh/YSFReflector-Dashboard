@@ -66,7 +66,7 @@ function createConfigLines() {
 function checkSetup() {
    $el = error_reporting();
    error_reporting(E_ERROR | E_WARNING | E_PARSE);
-   if (defined(DISTRIBUTION)) {
+   if (defined("DISTRIBUTION")) {
 ?>
 <div class="alert alert-danger" role="alert"><?php echo _("You are using an old config.php. Please configure your Dashboard by calling <a href=\"setup.php\">setup.php</a>!"); ?></div>
 <?php
